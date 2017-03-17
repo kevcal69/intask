@@ -30,7 +30,11 @@ module.exports = {
     },
 
     resolve: {
-        modules: ['node_modules', 'src/modules'],
-        extensions: ['.js', '.jsx']
+        modules: ['node_modules', 'src'],
+        extensions: ['.js', '.jsx'],
+        alias: {
+            modules: path.resolve(__dirname, '/modules'),
+            components: path.resolve(__dirname, '/components'),
+        }
     }
 }

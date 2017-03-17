@@ -26,7 +26,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'webpack_loader',
-    'intask'
+    'intask',
+    'contrib.restmodels'
 ]
 
 MIDDLEWARE = [
