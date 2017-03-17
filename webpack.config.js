@@ -1,18 +1,15 @@
 var path = require('path')
 var webpack = require('webpack')
-var Bundletracker = require('webpack-bundle-tracker')
 
 module.exports = {
     context: __dirname,
-    entry: './assets/js/index',
+    entry: './src/index.jsx',
     output: {
-        path: path.resolve('./assets/bundles/'),
-        filename: '[name]-[hash].js'
+        path: path.resolve('./assets/js/'),
+        filename: 'render.min.js'
     },
+
     plugins: [
-        new Bundletracker({
-            filename: './webpack-stats.json'
-        }),
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery',
@@ -26,13 +23,14 @@ module.exports = {
             exclude: /node_modules/,
             loader: 'babel-loader',
             query: {
-                presets: ['react']
+                presets: ['react', 'es2015', 'stage-0'],
+                plugins: ['react-html-attrs', 'transform-decorators-legacy', 'transform-class-properties'],
             }
         }]
     },
 
     resolve: {
-        modules: ['node_modules'],
+        modules: ['node_modules', 'src/modules'],
         extensions: ['.js', '.jsx']
     }
 }
